@@ -3,7 +3,10 @@ sap.ui.define(["demonr/controller/BaseController"], function (BaseController) {
     return BaseController.extend("demonr.controller.Home", {
         onInit: function () {},
         onDisplayNotFound: function () {
-            this.getRouter().getTargets().display("notfound", {fromTarget: "home"});    
+            this.getRouter().getTargets().display("notfound", {fromTarget: "home"});
+        },
+        onNavToEmployees: function () {
+            this.getRouter().navTo("EmployeeList");
         }
     });
-});
+})

@@ -93,6 +93,13 @@
           "target": [
             "home"
           ]
+        },
+        {
+          "name": "EmployeeList",
+          "pattern": "employee",
+          "target":[
+            "employees"
+          ]
         }
       ],
       "targets": {
@@ -106,10 +113,20 @@
         },
         "notfound": {
           "viewType": "XML",
-          "transition": "show",
+          "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "notfound",
-          "viewName": "NotFound"
+          "viewName": "NotFound",
+          "viewLevel": 2
+        },
+        "employees":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewPath": "demonr.view.employee",
+          "viewId": "employeeList",
+          "viewName": "EmployeeList",
+          "viewLevel": 2
         }
       }
     },

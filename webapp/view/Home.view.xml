@@ -2,14 +2,26 @@
     controllerName="demonr.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     displayBlock="true"
 >
-    <Page>
+    <Page
+        title="{i18n>homePageTitle}"
+        titleAlignment="Center"
+        class="mycustomContent"
+
+    >
         <content>
             <Button
                 id="displayNotFoundBtn"
                 text="{i18n>DisplayNotFoundBtnText}"
                 press=".onDisplayNotFound"
+                class="sapUiTinyMarginEnd"
+            />
+            <Button
+                id="displayEmployeeListBtn"
+                text="{i18n>displayEmployeeListBtnText}"
+                press=".onNavToEmployees"
                 class="sapUiTinyMarginEnd"
             />
         </content>
