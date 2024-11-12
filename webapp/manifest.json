@@ -14,7 +14,16 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.15.4",
       "toolsId": "c3f00bfb-a09f-49db-97d3-038f9b932c05"
-    }
+    },"dataSources": {
+			"employeeRemote": {
+				"uri": "/here/goes/your/serviceUrl/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri" : "localService/metadata.xml"
+				}
+			}
+		}
   },
   "sap.ui": {
     "technology": "UI5",
@@ -33,7 +42,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.130.0",
       "libs": {
@@ -51,7 +60,10 @@
         "settings": {
           "bundleName": "demonr.i18n.i18n"
         }
-      }
+      },
+      "": {
+				"dataSource": "employeeRemote"
+			}
     },
     "resources": {
       "css": [
