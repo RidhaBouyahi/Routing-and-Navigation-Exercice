@@ -1,9 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller"
-], function(controller) {
+], function(Controller) {
     "use strict";
-
-    return controller.extend ("demonr.controller.Home",{
+    return Controller.extend("demonr.controller.NotFound",{
         onInit:function(){
             
         }

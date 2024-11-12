@@ -14,16 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.15.4",
       "toolsId": "c3f00bfb-a09f-49db-97d3-038f9b932c05"
-    },"dataSources": {
-			"employeeRemote": {
-				"uri": "/here/goes/your/serviceUrl/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri" : "localService/metadata.xml"
-				}
-			}
-		}
+    },
+    "dataSources": {
+      "employeeRemote": {
+        "uri": "/here/goes/your/serviceUrl/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+    }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -62,8 +63,8 @@
         }
       },
       "": {
-				"dataSource": "employeeRemote"
-			}
+        "dataSource": "employeeRemote"
+      }
     },
     "resources": {
       "css": [
@@ -80,7 +81,10 @@
         "viewPath": "demonr.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": "notfound"
+        }
       },
       "routes": [
         {
@@ -99,6 +103,13 @@
           "viewId": "home",
           "viewName": "Home",
           "viewLevel": 1
+        },
+        "notfound": {
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "notfound",
+          "viewName": "NotFound"
         }
       }
     },

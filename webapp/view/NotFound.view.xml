@@ -1,0 +1,13 @@
+<mvc:XMLView
+    controllerName="demonr.controller.NotFound"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <Page>
+        <content>
+            <IllustratedMessage title="{i18n>NotFound}" description="{i18n>NotFound.description}" />
+        </content>
+    </Page>
+</mvc:XMLView>
