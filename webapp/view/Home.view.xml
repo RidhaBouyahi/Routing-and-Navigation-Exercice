@@ -1,0 +1,15 @@
+<mvc:XMLView
+    controllerName="demonr.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+>
+    <Page>
+        <content>
+            <Button
+                text="{i18n>iWantToNavigate}"
+                class="sapUiTinyMarginEnd"
+            />
+        </content>
+    </Page>
+</mvc:XMLView>
