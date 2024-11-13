@@ -5,7 +5,7 @@
     displayBlock="true"
 >
     <Page
-        id="employeePage"
+        id="employeeListPage"
         title="{i18n>PageTitle}"
         titleAlignment="Center"
         showNavButton="true"
@@ -25,6 +25,8 @@
                         title="{FirstName} {LastName}"
                         iconDensityAware="false"
                         iconInset="false"
+                        type="Navigation"
+                        press=".onNavToDetail"
                     />
                 </items>
             </List>

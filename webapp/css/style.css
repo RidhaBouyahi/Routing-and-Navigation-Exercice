@@ -1,16 +1,20 @@
+/* Classe CSS "mycustomContent" */
 .mycustomContent {
-    text-align: center;
-  }
-  .dynamicPageCentered {
-justify-content: center;
-align-items: center;
-  }
-  .test {
+  text-align: center;  /* Centre le texte horizontalement à l'intérieur de l'élément */
+}
 
-    margin: 0; /* Pour éviter les marges par défaut du body */
-    height: 100vh; /* Faire en sorte que le body prenne toute la hauteur de la fenêtre */
-    display: flex; /* Applique Flexbox au body */
-    justify-content: center; /* Centre horizontalement */
-    align-items: flex-start; /* Centre verticalement en haut de la page */
-    font-family: Arial, sans-serif; /* Optionnel : change la police */
-  }
+/* Classe CSS "dynamicPageCentered" */
+.dynamicPageCentered {
+  justify-content: center;  /* Centre le contenu horizontalement dans un conteneur flex */
+  align-items: center;      /* Centre le contenu verticalement dans un conteneur flex */
+}
+
+.test {
+
+  margin: 0; /* Pour éviter les marges par défaut du body */
+  height: 100vh; /* Faire en sorte que le body prenne toute la hauteur de la fenêtre */
+  display: flex; /* Applique Flexbox au body */
+  justify-content: center; /* Centre horizontalement */
+  align-items: flex-start; /* Centre verticalement en haut de la page */
+  font-family: Arial, sans-serif; /* Optionnel : change la police */
+}

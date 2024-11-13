@@ -11,7 +11,7 @@
                 text="{i18n>BackButtonText}"
                 icon="sap-icon://nav-back"
                 class="sapUiSmallMarginEnd"
-                press="onNavBack"
+                press=".onNavBack"
             />
             <IllustratedMessage
                 title="{i18n>NotFound}"

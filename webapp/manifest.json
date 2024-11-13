@@ -100,6 +100,13 @@
           "target":[
             "employees"
           ]
+        },
+        {
+          "name": "EmployeeDetail",
+          "pattern": "employees/{employeeId}",
+          "target":[
+            "detail"
+          ]
         }
       ],
       "targets": {
@@ -127,6 +134,15 @@
           "viewId": "employeeList",
           "viewName": "EmployeeList",
           "viewLevel": 2
+        },
+        "detail":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewPath": "demonr.view.employee",
+          "viewId": "employeeDetail",
+          "viewName": "Employee",
+          "viewLevel": 3
         }
       }
     },
