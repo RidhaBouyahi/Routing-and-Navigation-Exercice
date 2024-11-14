@@ -63,7 +63,30 @@ sap.ui.define(["demonr/controller/BaseController"], function (BaseController) {
             if (!this.getView().getBindingContext()) {
                 this.getRouter().getTargets().display("notfound");
             }
+        },
+        onNavToResume: function () { // Déclaration des variables
+            var oRouter, // Variable pour le routeur, utilisée pour naviguer entre les vues
+                oBindingCtx;
+            // Variable pour le contexte de liaison des données de l'élément affiché
+
+            // 1. Récupération de l'instance du routeur associé à la vue
+            oRouter = this.getRouter();
+
+            // 2. Récupération du contexte de liaison de l'élément actuellement affiché dans la vue
+            // `getView()` : Accède à la vue actuelle
+            // `getElementBinding()` : Obtient la liaison de données de l'élément (par exemple, une ligne de tableau ou un item de liste)
+            // `getBoundContext()` : Retourne le contexte de l'élément lié à l'entité de données (ici, l'employé spécifique)
+            oBindingCtx = this.getView().getElementBinding().getBoundContext();
+
+            // 3. Navigation vers la vue "employeeResume" en passant l'ID de l'employé en paramètre
+            // `navTo()` : Permet de naviguer vers une autre vue en passant des paramètres de navigation
+            // Le premier paramètre est le nom de la vue de destination ("employeeResume")
+            // Le second paramètre est un objet contenant les paramètres de navigation ; ici, on passe l'ID de l'employé
+            oRouter.navTo("employeeResume", { // `getProperty("EmployeeID")` récupère la valeur de la propriété "EmployeeID" à partir du contexte de liaison
+                employeeId: oBindingCtx.getProperty("EmployeeID")
+            });
         }
+
 
     });
 

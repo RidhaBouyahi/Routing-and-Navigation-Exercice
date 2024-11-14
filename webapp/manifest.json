@@ -107,6 +107,13 @@
           "target":[
             "detail"
           ]
+        },
+        {
+          "name": "employeeResume",
+          "pattern": "employees/{employeeId}/Resume",
+          "target":[
+            "resume"
+          ]
         }
       ],
       "targets": {
@@ -143,6 +150,14 @@
           "viewId": "employeeDetail",
           "viewName": "Employee",
           "viewLevel": 3
+        },
+        "resume":{
+          "viewType": "XML",
+          "transition": "flip",
+          "clearControlAggregation": false,
+          "viewId": "resume",
+          "viewName": "employee.Resume",
+          "viewLevel": 4
         }
       }
     },
