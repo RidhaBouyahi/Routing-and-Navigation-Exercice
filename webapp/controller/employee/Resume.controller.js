@@ -57,8 +57,14 @@ sap.ui.define([
             // Récupère les paramètres de la query dans l'URL (par exemple, tab)
 
             // Vérification si le paramètre "tab" est valide, s'il l'est, on met à jour le modèle
-            if (oQuery && _aValidTabKeys.indexOf(oQuery.tab) > -1) {
-                oView.getModel("view").setProperty("/selectedTabKey", oQuery.tab); // Mise à jour de la propriété "selectedTabKey" dans le modèle "view"
+            if (oQuery && _aValidTabKeys.indexOf(oQuery.tab) > -1) { // Mise à jour de la propriété "selectedTabKey" dans le modèle "view"
+                oView.getModel("view").setProperty("/selectedTabKey", oQuery.tab);
+                // support lazy loading for the hobbies and notes tab
+                if (oQuery.tab === "Hobbies" || oQuery.tab === "Notes") { // the target is either "resumeTabHobbies" or "resumeTabNotes"
+                    console.log(("resumeTab" + oQuery.tab));
+                    this.getRouter().getTargets().display("resumeTab" + oQuery.tab);
+
+                }
             } else { // Si l'onglet est invalide ou absent, on redirige vers l'onglet valide par défaut
                 this.getRouter().navTo("employeeResume", {
                     employeeId: oArgs.employeeId,
@@ -68,8 +74,8 @@ sap.ui.define([
                 }, true); // true indique qu'il ne faut pas ajouter cette navigation à l'historique de navigation
             }
 
-           // var selectedTab = oQuery.tab; // Récupère la clé de l'onglet sélectionné tab
-           // console.log("Onglet sélectionné : ", selectedTab); // Affiche la clé de l'onglet sélectionné dans la console
+            // var selectedTab = oQuery.tab; // Récupère la clé de l'onglet sélectionné tab
+            // console.log("Onglet sélectionné : ", selectedTab); // Affiche la clé de l'onglet sélectionné dans la console
         },
 
         // Fonction appelée lorsque le lien de données a changé (par exemple, lorsqu'une nouvelle donnée a été chargée)
