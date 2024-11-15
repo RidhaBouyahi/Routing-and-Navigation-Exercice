@@ -17,6 +17,8 @@
                 headerBackgroundDesign="Transparent"
                 class="sapUiResponsiveContentPadding"
                 binding="{Resume}"
+                select=".onTabSelect"
+                selectedKey="{view>/selectedTabKey}"
             >
                 <items>
                     <IconTabFilter
