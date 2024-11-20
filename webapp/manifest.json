@@ -96,22 +96,27 @@
         },
         {
           "name": "EmployeeList",
-          "pattern": "employee",
-          "target":[
+          "pattern": "employees",
+          "target": [
             "employees"
           ]
         },
         {
+          "pattern": "employees/overview",
+          "name": "employeeOverview",
+          "target": ["EmployeeOverviewTop", "EmployeeOverviewContent"]
+        },
+        {
           "name": "EmployeeDetail",
           "pattern": "employees/{employeeId}",
-          "target":[
+          "target": [
             "detail"
           ]
         },
         {
           "name": "employeeResume",
           "pattern": "employees/{employeeId}/Resume:?query:",
-          "target":[
+          "target": [
             "resume"
           ]
         }
@@ -120,7 +125,6 @@
         "home": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
           "viewId": "home",
           "viewName": "Home",
           "viewLevel": 1
@@ -128,52 +132,57 @@
         "notfound": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
           "viewId": "notfound",
           "viewName": "NotFound",
           "viewLevel": 2
         },
-        "employees":{
+        "employees": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
           "viewPath": "demonr.view.employee",
           "viewId": "employeeList",
           "viewName": "EmployeeList",
           "viewLevel": 2
         },
-        "detail":{
+        "detail": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
           "viewPath": "demonr.view.employee",
           "viewId": "employeeDetail",
           "viewName": "Employee",
           "viewLevel": 3
         },
-        "resume":{
+        "resume": {
           "viewType": "XML",
           "transition": "flip",
           "viewId": "resume",
           "viewName": "employee.Resume",
           "viewLevel": 4
         },
-        "resumeTabHobbies": {
-          "id": "resumeHobbies",
-          "parent": "resume",
-          "path": "demonr.view.employee",
-          "name": "ResumeHobbies",
-          "controlId": "hobbiesTab",
-          "controlAggregation": "content"
-        },
-        "resumeTabNotes": {
-          "id": "resumeNotes",
-          "parent": "resume",
-          "path": "demonr.view.employee",
-          "name": "ResumeNotes",
-          "controlId": "notesTab",
-          "controlAggregation": "content"
-        }
+				"EmployeeOverview": {
+					"viewId": "employeeOverview",
+					"viewPath": "demonr.view.employee.overview",
+					"viewName": "EmployeeOverview",
+          "viewType": "XML",
+          "transition":"slide",
+					"level" : 2
+				},
+				"EmployeeOverviewTop": {
+					"parent": "EmployeeOverview",
+					"viewId": "employeeOverviewTop",
+					"viewPath": "demonr.view.employee.overview",
+					"viewName": "EmployeeOverviewTop",
+					"controlId": "EmployeeOverviewParent",
+					"controlAggregation": "content"
+				},
+				"EmployeeOverviewContent": {
+					"parent": "EmployeeOverview",
+					"viewId": "employeeOverviewContent",
+					"viewPath": "demonr.view.employee.overview",
+					"viewName": "EmployeeOverviewContent",
+					"controlId": "EmployeeOverviewParent",
+					"controlAggregation": "content"
+				}
       }
     },
     "rootView": {

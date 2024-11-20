@@ -26,7 +26,10 @@ sap.ui.define(["demonr/controller/BaseController"], function (BaseController) {
             // Utilisation du routeur pour naviguer vers la vue "EmployeeList".
             // Cette méthode appelle le routeur pour effectuer la navigation vers la vue correspondante.
             this.getRouter().navTo("EmployeeList");
-        }
+        },
+        onNavToEmployeeOverview : function (oEvent) {
+			this.getRouter().navTo("employeeOverview");
+		}
+    })
 
-    });
 });

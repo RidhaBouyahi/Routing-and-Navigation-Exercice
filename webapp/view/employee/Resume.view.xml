@@ -42,14 +42,14 @@
                         text="{i18n>tabHobbies}"
                         key="Hobbies"
                     >
-                        <!-- place content via lazy loading -->
+                       <mvc:XMLView viewName="demonr.view.employee.ResumeHobbies"/>
                     </IconTabFilter>
                     <IconTabFilter
                         id="notesTab"
                         text="{i18n>tabNotes}"
                         key="Notes"
                     >
-                        <!-- place content via lazy loading -->
+                      <mvc:XMLView viewName="demonr.view.employee.ResumeNotes"/>
                     </IconTabFilter>
                 </items>
             </IconTabBar>

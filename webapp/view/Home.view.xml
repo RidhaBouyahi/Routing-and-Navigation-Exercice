@@ -9,7 +9,6 @@
         title="{i18n>homePageTitle}"
         titleAlignment="Center"
         class="mycustomContent"
-
     >
         <content>
             <Button
@@ -22,6 +21,12 @@
                 id="displayEmployeeListBtn"
                 text="{i18n>displayEmployeeListBtnText}"
                 press=".onNavToEmployees"
+                class="sapUiTinyMarginEnd"
+            />
+            <Button
+                id="overviewPageTableBtn"
+                text="{i18n>overviewPageTableBtnText}"
+                press=".onNavToEmployeeOverview"
                 class="sapUiTinyMarginEnd"
             />
         </content>
