@@ -100,10 +100,8 @@ sap.ui.define([
                 text: "Employee ID", // Texte affiché pour l'option
                 selected: true // Sélectionne par défaut "EmployeeID" comme champ de tri
             }));
-
             // Ajout des autres champs pour le tri
             this._oVSD.addSortItem(new ViewSettingsItem({key: "FirstName", text: "First Name", selected: false}));
-
             this._oVSD.addSortItem(new ViewSettingsItem({key: "LastName", text: "Last Name", selected: false}));
         },
 
@@ -167,8 +165,8 @@ sap.ui.define([
                 // Enregistre les informations sur le tri actuel
                 this._sSortField = sSortField;
                 this._bSortDescending = bSortDescending;
-                oSorter = new Sorter(sSortField, bSortDescending);
                 // Crée un objet de tri avec les paramètres spécifiés
+                oSorter = new Sorter(sSortField, bSortDescending);
 
                 // Synchronise la boîte de dialogue des paramètres de vue avec les choix de tri actuels
                 this._syncViewSettingsDialogSorter(sSortField, bSortDescending);
@@ -183,6 +181,18 @@ sap.ui.define([
         _syncViewSettingsDialogSorter: function (sSortField, bSortDescending) { // Met à jour la boîte de dialogue avec le champ de tri et l'ordre sélectionnés
             this._oVSD.setSelectedSortItem(sSortField);
             this._oVSD.setSortDescending(bSortDescending);
+        },
+
+        onItemPressed: function (oEvent) {
+            var oRouter = this.getRouter();
+            var oBindingCtx , oItem;
+            oItem = oEvent.getParameter("listItem");
+            oBindingCtx = oItem.getBindingContext();
+            oRouter.navTo("employeeResume",{
+                employeeId : oBindingCtx.getProperty("EmployeeID"),"?query": {
+                    tab : "Info"
+                }}
+            );
         }
 
     });

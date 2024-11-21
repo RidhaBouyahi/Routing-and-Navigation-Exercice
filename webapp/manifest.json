@@ -159,6 +159,22 @@
           "viewName": "employee.Resume",
           "viewLevel": 4
         },
+				"resumeTabHobbies": {
+					"id": "resumeHobbies",
+					"parent": "resume",
+					"path": "demonr.view.employee",
+					"name": "ResumeHobbies",
+					"controlId": "hobbiesTab",
+					"controlAggregation": "content"
+				},
+				"resumeTabNotes": {
+					"id": "resumeNotes",
+					"parent": "resume",
+					"path": "demonr.view.employee",
+					"name": "ResumeNotes",
+					"controlId": "notesTab",
+					"controlAggregation": "content"
+				},
 				"EmployeeOverview": {
 					"viewId": "employeeOverview",
 					"viewPath": "demonr.view.employee.overview",

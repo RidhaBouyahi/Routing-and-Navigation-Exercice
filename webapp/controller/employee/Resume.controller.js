@@ -59,12 +59,7 @@ sap.ui.define([
             // Vérification si le paramètre "tab" est valide, s'il l'est, on met à jour le modèle
             if (oQuery && _aValidTabKeys.indexOf(oQuery.tab) > -1) { // Mise à jour de la propriété "selectedTabKey" dans le modèle "view"
                 oView.getModel("view").setProperty("/selectedTabKey", oQuery.tab);
-                // support lazy loading for the hobbies and notes tab
-                if (oQuery.tab === "Hobbies" || oQuery.tab === "Notes") { // the target is either "resumeTabHobbies" or "resumeTabNotes"
-                    console.log(("resumeTab" + oQuery.tab));
-                    this.getRouter().getTargets().display("resumeTab" + oQuery.tab);
-
-                }
+                
             } else { // Si l'onglet est invalide ou absent, on redirige vers l'onglet valide par défaut
                 this.getRouter().navTo("employeeResume", {
                     employeeId: oArgs.employeeId,
