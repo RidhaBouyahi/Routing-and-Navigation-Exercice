@@ -102,7 +102,7 @@
           ]
         },
         {
-          "pattern": "employees/overview",
+          "pattern": "employees/overview:?query:",
           "name": "employeeOverview",
           "target": ["EmployeeOverviewTop", "EmployeeOverviewContent"]
         },
