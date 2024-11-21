@@ -41,18 +41,24 @@ sap.ui.define([
 
             // S'assure que l'objet "query" est défini dans les arguments (si ce n'est pas le cas, le crée comme un objet vide)
             this._oRouterArgs["?query"] = this._oRouterArgs["?query"] || {};
-			var oQueryParameter = this._oRouterArgs["?query"];
+            var oQueryParameter = this._oRouterArgs["?query"];
 
             // Applique un filtre de recherche basé sur la valeur passée dans l'URL (le paramètre "search")
             this._applySearchFilter(oQueryParameter.search);
-			// Applique un sorter  basé sur les valeurs passées dans l'URL (le paramètre "sortField" et "sortDescending")
-			this._applySorter(oQueryParameter.sortField,oQueryParameter.sortDescending)
+            // Applique un sorter  basé sur les valeurs passées dans l'URL (le paramètre "sortField" et "sortDescending")
+            this._applySorter(oQueryParameter.sortField, oQueryParameter.sortDescending)
+            // si l'argument showDialog contient une valeur, la boite de dialog est affiché.
+            if (oQueryParameter.showDialog) {
+                this._oVSD.open();
+            }
 
         },
 
         // Méthode appelée lorsque l'utilisateur appuie sur le bouton de tri
         onSortButtonPressed: function () { // Ouvre la boîte de dialogue permettant à l'utilisateur de sélectionner un critère de tri
-            this._oVSD.open();
+            var oRouter = this.getRouter();
+            this._oRouterArgs["?query"].showDialog = 1; // affectation d'une valeur =1 pour l'agrument de routeur showDialog
+            oRouter.navTo("employeeOverview", this._oRouterArgs) // Navigue vers la route "employeeOverview" en envoyant les arguments du routeur mis à jour
         },
 
         // Méthode appelée lors de la recherche dans la table des employés
@@ -71,14 +77,21 @@ sap.ui.define([
         _initViewSettingsDialog: function () { // Crée une nouvelle instance de la boîte de dialogue des paramètres de vue
             this._oVSD = new ViewSettingsDialog("vsd", { // Lorsque l'utilisateur confirme ses choix dans la boîte de dialogue
                 confirm: function (oEvent) { // Affectation des choix de l'utilisateur aux arguments du routeur
-					var oRouter = this.getRouter();
+                    var oRouter = this.getRouter();
                     var oSortItem = oEvent.getParameter("sortItem");
-                    this._oRouterArgs["?query"].sortField = oSortItem.getKey(); 
+                    this._oRouterArgs["?query"].sortField = oSortItem.getKey();
                     this._oRouterArgs["?query"].sortDescending = oEvent.getParameter("sortDescending");
+                    // suppression de la valeur pour la boite de dialog ne reste pas ouverte.
+                    delete this._oRouterArgs["?query"].showDialog;
                     // Navigue vers la route "employeeOverview" en envoyant les arguments du routeur mis à jour, sans conserver l'historique de la navigation
                     oRouter.navTo("employeeOverview", this._oRouterArgs, true /*no history*/
                     );
-                }.bind(this)
+                }.bind(this),
+                cancel: function (oEvent) {
+                    delete this._oRouterArgs["?query"].showDialog; // suppression de la valeur pour la boite de dialog ne reste pas ouverte.
+                    oRouter.navTo("employeeOverview", this._oRouterArgs, true /*without History*/
+                    )
+                }
             });
 
             // Ajout des options de tri dans la boîte de dialogue
