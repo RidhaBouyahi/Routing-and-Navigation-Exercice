@@ -41,9 +41,13 @@ sap.ui.define([
 
             // S'assure que l'objet "query" est défini dans les arguments (si ce n'est pas le cas, le crée comme un objet vide)
             this._oRouterArgs["?query"] = this._oRouterArgs["?query"] || {};
+			var oQueryParameter = this._oRouterArgs["?query"];
 
             // Applique un filtre de recherche basé sur la valeur passée dans l'URL (le paramètre "search")
-            this._applySearchFilter(this._oRouterArgs["?query"].search);
+            this._applySearchFilter(oQueryParameter.search);
+			// Applique un sorter  basé sur les valeurs passées dans l'URL (le paramètre "sortField" et "sortDescending")
+			this._applySorter(oQueryParameter.sortField,oQueryParameter.sortDescending)
+
         },
 
         // Méthode appelée lorsque l'utilisateur appuie sur le bouton de tri
@@ -66,9 +70,14 @@ sap.ui.define([
         // Méthode pour initialiser la boîte de dialogue des paramètres de vue
         _initViewSettingsDialog: function () { // Crée une nouvelle instance de la boîte de dialogue des paramètres de vue
             this._oVSD = new ViewSettingsDialog("vsd", { // Lorsque l'utilisateur confirme ses choix dans la boîte de dialogue
-                confirm: function (oEvent) { // Applique le tri en fonction de la sélection de l'utilisateur
+                confirm: function (oEvent) { // Affectation des choix de l'utilisateur aux arguments du routeur
+					var oRouter = this.getRouter();
                     var oSortItem = oEvent.getParameter("sortItem");
-                    this._applySorter(oSortItem.getKey(), oEvent.getParameter("sortDescending"));
+                    this._oRouterArgs["?query"].sortField = oSortItem.getKey(); 
+                    this._oRouterArgs["?query"].sortDescending = oEvent.getParameter("sortDescending");
+                    // Navigue vers la route "employeeOverview" en envoyant les arguments du routeur mis à jour, sans conserver l'historique de la navigation
+                    oRouter.navTo("employeeOverview", this._oRouterArgs, true /*no history*/
+                    );
                 }.bind(this)
             });
 
